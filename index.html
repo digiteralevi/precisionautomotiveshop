@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Auto Works | Premium Automotive Repair & Maintenance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E53E3E',
+                            darkRed: '#C53030',
+                            navy: '#0F172A',
+                            slate: '#1E293B',
+                            accent: '#2563EB',
+                            lightGray: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.7) 100%);
+        }
+        .custom-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-brand-lightGray font-sans text-slate-800 antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Top Bar -->
+    <div class="bg-brand-navy text-gray-300 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center"><i class="fa-solid fa-location-dot text-brand-red mr-2"></i> 123 Quezon Avenue, Quezon City, Metro Manila</span>
+                <span class="hidden md:flex items-center"><i class="fa-solid fa-clock text-brand-red mr-2"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:09175550199" class="hover:text-white font-semibold transition flex items-center">
+                    <i class="fa-solid fa-phone text-brand-red mr-2"></i> (02) 8555-0199 / 0917-555-0199
+                </a>
+                <span class="text-slate-600">|</span>
+                <div class="flex space-x-3 text-sm">
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <div class="bg-brand-red text-white p-2.5 rounded-xl shadow-lg">
+                        <i class="fa-solid fa-wrench text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-brand-navy block uppercase leading-none">Precision</span>
+                        <span class="text-xs font-bold tracking-widest text-brand-red uppercase">Auto Works</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-slate-700">
+                    <a href="#services" class="hover:text-brand-red transition">Services</a>
+                    <a href="#estimator" class="hover:text-brand-red transition">Cost Calculator</a>
+                    <a href="#why-us" class="hover:text-brand-red transition">Why Choose Us</a>
+                    <a href="#reviews" class="hover:text-brand-red transition">Reviews</a>
+                    <a href="#faq" class="hover:text-brand-red transition">FAQ</a>
+                </div>
+
+                <!-- Call To Action Button -->
+                <div class="hidden md:block">
+                    <button onclick="openBookingModal()" class="bg-brand-red hover:bg-brand-darkRed text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-red-500/30 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i> Book Appointment
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-brand-red focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100">Services</a>
+            <a href="#estimator" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100">Cost Calculator</a>
+            <a href="#why-us" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100">Why Choose Us</a>
+            <a href="#reviews" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100">Reviews</a>
+            <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100">FAQ</a>
+            <button onclick="openBookingModal()" class="w-full mt-2 bg-brand-red text-white font-bold py-3 px-4 rounded-xl shadow">
+                Book Appointment
+            </button>
+        </div>
+    </nav>
+
+    <header class="relative bg-brand-navy text-white min-h-[85vh] flex items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1613214149922-f1809c99b414?q=80&w=2000&auto=format&fit=crop');">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-brand-red/20 border border-brand-red/40 text-red-400 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
+                        <i class="fa-solid fa-shield-halved"></i> ASE Certified Master Technicians
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">
+                        Expert Repair.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Performance Driven.</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
+                        Metro Manila’s premier dealer-alternative for automotive maintenance, engine diagnostics, and performance upgrades. Backed by our 12-Month / 20,000-KM Warranty.
+                    </p>
+                    
+                    <!-- Quick Specs Badges -->
+                    <div class="pt-2 flex flex-wrap gap-6 text-sm text-slate-300">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i> Same-Day Service
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i> Free Digital Inspection
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-brand-red"></i> Complimentary Shuttle
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <button onclick="openBookingModal()" class="bg-brand-red hover:bg-brand-darkRed text-white text-lg font-bold py-4 px-8 rounded-xl shadow-xl transition transform hover:-translate-y-0.5 text-center">
+                            Book Your Service
+                        </button>
+                        <a href="#estimator" class="bg-slate-800/80 hover:bg-slate-800 border border-slate-600 text-white text-lg font-semibold py-4 px-8 rounded-xl transition text-center backdrop-blur-sm">
+                            Get Online Estimate
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Quick Booking Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-100">
+                        <h2 class="text-2xl font-bold mb-1 text-brand-navy">Quick Appointment</h2>
+                        <p class="text-slate-500 text-sm mb-6">Schedule your repair or maintenance in under 60 seconds.</p>
+                        
+                        <form id="hero-quick-form" onsubmit="handleHeroSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Vehicle Year / Make / Model</label>
+                                <input type="text" required placeholder="e.g. 2022 Toyota Vios or Ford Everest" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Primary Service Needed</label>
+                                <select required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none bg-white">
+                                    <option value="">Select a Service...</option>
+                                    <option value="diagnostics">Computer Diagnostics / Check Engine</option>
+                                    <option value="brakes">Brake Repair & Replacement</option>
+                                    <option value="oil">Fully Synthetic Oil Change</option>
+                                    <option value="maintenance">PMS (Periodic Maintenance Service)</option>
+                                    <option value="tires">Tires & Wheel Alignment</option>
+                                    <option value="other">Other Repair Issue</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phone Number</label>
+                                <input type="tel" required placeholder="0917 000 0000" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none">
+                            </div>
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-lg transition shadow-md">
+                                Request Callback
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Full-Service Auto Care</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">Comprehensive Automotive Services</h2>
+            <p class="text-slate-600 mt-4 text-lg">From routine oil changes to full engine overhauls, our state-of-the-art facility handles foreign and domestic vehicles with precision.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">Engine Diagnostics</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Advance dealer-level scanning tools to accurately diagnose check engine lights, electrical glitches, and performance drops.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('Engine Diagnostics')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">Brake System Repair</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Complete pad, rotor, and caliper replacements using OEM or high-performance ceramic components for ultimate stopping power.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('Brake Service')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-oil-can"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">Preventative Maintenance</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Synthetic oil updates, fluid flushes, belt replacements, and 30k/60k/90k factory-recommended service packages.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('Preventative Maintenance')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">Suspension & Steering</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Struts, shocks, control arms, and precision 4-wheel laser alignments for a smoother ride and balanced tire wear.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('Suspension Repair')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service Card 5 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-temperature-arrow-down"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">A/C & Heating Systems</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Refrigerant recharge, compressor replacements, and climate control troubleshooting to keep you comfortable in all seasons.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('AC Service')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service Card 6 -->
+            <div class="bg-white rounded-2xl p-8 shadow-md border border-slate-100 hover:shadow-xl transition group">
+                <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+                <h3 class="text-xl font-bold text-brand-navy mb-3">Transmission Repairs</h3>
+                <p class="text-slate-600 leading-relaxed text-sm mb-4">Transmission fluid services, clutch replacements, and complete rebuilds for automatic and manual vehicles.</p>
+                <a href="javascript:void(0)" onclick="openBookingModal('Transmission Service')" class="text-brand-red font-bold text-sm flex items-center gap-2 hover:gap-3 transition">
+                    Book Service <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="estimator" class="py-20 bg-brand-navy text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Instant Transparency</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Interactive Repair Cost Estimator</h2>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Get an immediate estimate for standard maintenance services in Philippine Peso (₱). Final pricing depends on specific vehicle make, model year, and parts required.
+                    </p>
+                    <div class="space-y-4 text-sm text-slate-300">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-red/20 text-brand-red flex items-center justify-center font-bold">1</div>
+                            <span>Select vehicle category</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-red/20 text-brand-red flex items-center justify-center font-bold">2</div>
+                            <span>Select required services</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-red/20 text-brand-red flex items-center justify-center font-bold">3</div>
+                            <span>Get instant estimate breakdown</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-2xl">
+                    <div class="space-y-6">
+                        <!-- Vehicle Type Selector -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">1. Choose Vehicle Category</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button type="button" onclick="setVehicleMultiplier(1.0, this)" class="veh-btn bg-brand-red text-white py-3 px-4 rounded-xl text-center font-medium border border-transparent transition">Sedan / Hatchback</button>
+                                <button type="button" onclick="setVehicleMultiplier(1.25, this)" class="veh-btn bg-slate-700 hover:bg-slate-600 text-white py-3 px-4 rounded-xl text-center font-medium border border-slate-600 transition">Compact SUV / Crossover</button>
+                                <button type="button" onclick="setVehicleMultiplier(1.5, this)" class="veh-btn bg-slate-700 hover:bg-slate-600 text-white py-3 px-4 rounded-xl text-center font-medium border border-slate-600 transition">7-Seater / Pickup / Luxury</button>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox Options -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">2. Choose Required Services</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center justify-between p-3.5 bg-slate-700/50 hover:bg-slate-700 rounded-xl cursor-pointer transition">
+                                    <span class="flex items-center gap-3">
+                                        <input type="checkbox" value="3500" onchange="calculateEstimate()" class="calc-check w-5 h-5 accent-brand-red rounded">
+                                        <span>Fully Synthetic Oil & Filter Change (PMS Package)</span>
+                                    </span>
+                                    <span class="font-bold text-slate-300">₱3,500</span>
+                                </label>
+                                <label class="flex items-center justify-between p-3.5 bg-slate-700/50 hover:bg-slate-700 rounded-xl cursor-pointer transition">
+                                    <span class="flex items-center gap-3">
+                                        <input type="checkbox" value="4800" onchange="calculateEstimate()" class="calc-check w-5 h-5 accent-brand-red rounded">
+                                        <span>Brake Pad Replacement & Cleaning (Front or Rear)</span>
+                                    </span>
+                                    <span class="font-bold text-slate-300">₱4,800</span>
+                                </label>
+                                <label class="flex items-center justify-between p-3.5 bg-slate-700/50 hover:bg-slate-700 rounded-xl cursor-pointer transition">
+                                    <span class="flex items-center gap-3">
+                                        <input type="checkbox" value="2200" onchange="calculateEstimate()" class="calc-check w-5 h-5 accent-brand-red rounded">
+                                        <span>3D Wheel Alignment & Computerized Balancing</span>
+                                    </span>
+                                    <span class="font-bold text-slate-300">₱2,200</span>
+                                </label>
+                                <label class="flex items-center justify-between p-3.5 bg-slate-700/50 hover:bg-slate-700 rounded-xl cursor-pointer transition">
+                                    <span class="flex items-center gap-3">
+                                        <input type="checkbox" value="1800" onchange="calculateEstimate()" class="calc-check w-5 h-5 accent-brand-red rounded">
+                                        <span>Full Computer OBD2 Scanning & Diagnostics</span>
+                                    </span>
+                                    <span class="font-bold text-slate-300">₱1,800</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Total Display -->
+                        <div class="pt-4 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <span class="text-xs text-slate-400 block uppercase font-bold">Estimated Total Range</span>
+                                <span id="estimate-total" class="text-4xl font-extrabold text-brand-red">₱0</span>
+                                <span class="text-xs text-slate-400 block">*Plus VAT and shop supply fees if applicable</span>
+                            </div>
+                            <button onclick="openBookingModal('Estimated Services')" class="w-full sm:w-auto bg-brand-red hover:bg-brand-darkRed text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition">
+                                Lock-In Estimate & Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Customer Stories</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">Trusted By Over 5,000+ Car Owners in Metro Manila</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Mabilis at napaka-transparente nila sa presyo! Nakatipid ako nang malaki kumpara sa casa quote para sa 40,000 KM PMS ng Montero Sport ko. Nagpapadala pa sila ng inspection report sa Viber."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            JM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">Juan Dela Cruz</h4>
+                            <p class="text-slate-400 text-xs">Mitsubishi Montero Sport Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Napakadaling kausap ng mga mekaniko. Akala ko papalitan na ang buong alternator ng Vios ko, yun pala maluwag lang ang mga wiring. Napaka-honest ng shop na 'to!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            MS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">Maria Santos</h4>
+                            <p class="text-slate-400 text-xs">Toyota Vios Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Excellent service! Malamig na muli ang aircon ng Everest ko. Recommended shop kung ayaw niyo pumila nang matagal sa dealer casa."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            AR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">Arnel Reyes</h4>
+                            <p class="text-slate-400 text-xs">Ford Everest Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1000&auto=format&fit=crop" alt="Mechanic working on sports car" class="rounded-3xl shadow-2xl object-cover w-full h-[500px]">
+                <!-- Floating Stats Card -->
+                <div class="absolute -bottom-8 -right-4 sm:right-8 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                    <div class="bg-red-100 text-brand-red p-4 rounded-xl text-3xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <span class="text-3xl font-extrabold text-brand-navy block">15+ Years</span>
+                        <span class="text-slate-500 text-sm font-medium">Serving Seattle Drivers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <span class="text-brand-red font-bold uppercase tracking-wider text-sm">The Precision Difference</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy">Why Smart Drivers Choose Us Over the Dealership</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    We believe automotive service should be transparent, convenient, and reliable. We combine dealership-grade technology with independent shop care and pricing.
+                </p>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">24-Month / 24,000-Mile Warranty</h4>
+                            <p class="text-slate-600 text-sm mt-1">Drive with peace of mind knowing all repairs are covered nationwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">Digital Vehicle Inspections</h4>
+                            <p class="text-slate-600 text-sm mt-1">Receive photos and video reports directly to your phone before approving any work.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">Transparent Upfront Pricing</h4>
+                            <p class="text-slate-600 text-sm mt-1">No surprise fees or hidden costs. You approve every repair dollar in advance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Customer Stories</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">Trusted By Over 5,000+ Vehicle Owners</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Precision Auto Works saved me over $1,200 compared to what the BMW dealership quoted for my brake service and sensor replacement. The digital inspection report sent to my phone was super detailed!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            JD
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">David Miller</h4>
+                            <p class="text-slate-400 text-xs">BMW M3 Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Extremely honest staff. Brought my truck in thinking I needed a new alternator, but it turned out to be just a loose connection. They fixed it for free! They have earned a customer for life."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            SR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">Sarah Jenkins</h4>
+                            <p class="text-slate-400 text-xs">Ford F-150 Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 italic">
+                            "Quick turnaround, super friendly shuttle driver, and my car drives smoother than ever. The online booking system made scheduling effortless."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                            AM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-sm">Alex Mercer</h4>
+                            <p class="text-slate-400 text-xs">Audi A4 Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-brand-red font-bold uppercase tracking-wider text-sm">Got Questions?</span>
+            <h2 class="text-3xl font-extrabold text-brand-navy mt-2">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-brand-navy flex justify-between items-center hover:bg-slate-50 transition">
+                    <span>Do you offer loaner cars or shuttle service?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    Yes! We provide a free local shuttle service within a 10-mile radius. We also have complimentary loaner vehicles available for major repair services (reservation required).
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-brand-navy flex justify-between items-center hover:bg-slate-50 transition">
+                    <span>Will servicing my vehicle here void my manufacturer warranty?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    No! Under the Magnuson-Moss Warranty Act, you are legally free to have your vehicle serviced at any independent repair shop without voiding your factory warranty.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-brand-navy flex justify-between items-center hover:bg-slate-50 transition">
+                    <span>How long does a standard diagnostic inspection take?</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                    Most initial computer diagnostic checks take approximately 60 to 90 minutes. Once completed, your advisor will send a digital report with full details and photo evidence before performing any repair.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                <!-- Col 1 -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-brand-red text-white p-2 rounded-lg">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <span class="text-xl font-black uppercase">Precision Auto</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Seattle’s premier independent auto repair shop specializing in dealer-quality repair, transparent digital inspections, and exceptional customer service.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#services" class="hover:text-white transition">Our Services</a></li>
+                        <li><a href="#estimator" class="hover:text-white transition">Cost Estimator</a></li>
+                        <li><a href="#why-us" class="hover:text-white transition">Why Choose Us</a></li>
+                        <li><a href="#reviews" class="hover:text-white transition">Customer Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">Operating Hours</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex justify-between"><span>Mon - Sat:</span> <span>8:00 AM - 6:00 PM</span></li>
+                        <li class="flex justify-between text-brand-red"><span>Sunday:</span> <span>Closed</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">Location & Contact</h4>
+                    <p class="text-sm text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-brand-red mr-2"></i> 123 Quezon Avenue, Quezon City</p>
+                    <p class="text-sm text-slate-400 mb-2"><i class="fa-solid fa-phone text-brand-red mr-2"></i> (02) 8555-0199 / 0917-555-0199</p>
+                    <p class="text-sm text-slate-400"><i class="fa-solid fa-envelope text-brand-red mr-2"></i> service@precisionautoworks.ph</p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 Precision Auto Works. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Designed for Portfolio Demonstration.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-slate-800 rounded-2xl max-w-lg w-full p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-brand-navy">Schedule Your Appointment</h3>
+                <p class="text-slate-500 text-sm">Select your preferred date & time for service.</p>
+            </div>
+
+            <form id="modal-booking-form" onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name</label>
+                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phone</label>
+                        <input type="tel" required placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Vehicle Year & Make</label>
+                        <input type="text" required placeholder="e.g. 2020 Honda Civic" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Requested Service</label>
+                    <input type="text" id="modal-service-input" placeholder="e.g. Brake Service, Oil Change" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Preferred Date</label>
+                        <input type="date" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Preferred Time</label>
+                        <select required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none bg-white">
+                            <option value="morning">Morning (8AM - 12PM)</option>
+                            <option value="afternoon">Afternoon (12PM - 4PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-red hover:bg-brand-darkRed text-white font-bold py-3.5 rounded-xl shadow-lg transition mt-4">
+                    Confirm Appointment Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-emerald-600 text-white px-6 py-4 rounded-xl shadow-2xl hidden flex items-center gap-3 z-50">
+        <i class="fa-solid fa-circle-check text-2xl"></i>
+        <div>
+            <h5 class="font-bold text-sm">Request Submitted!</h5>
+            <p class="text-xs text-emerald-100">We will call you shortly to confirm your slot.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentVehicleMultiplier = 1.0;
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Cost Calculator in PHP
+        function setVehicleMultiplier(multiplier, btnElement) {
+            currentVehicleMultiplier = multiplier;
+            
+            // Highlight active button
+            document.querySelectorAll('.veh-btn').forEach(btn => {
+                btn.className = "veh-btn bg-slate-700 hover:bg-slate-600 text-white py-3 px-4 rounded-xl text-center font-medium border border-slate-600 transition";
+            });
+            btnElement.className = "veh-btn bg-brand-red text-white py-3 px-4 rounded-xl text-center font-medium border border-transparent transition";
+            
+            calculateEstimate();
+        }
+
+        function calculateEstimate() {
+            const checkboxes = document.querySelectorAll('.calc-check:checked');
+            let baseTotal = 0;
+            
+            checkboxes.forEach(cb => {
+                baseTotal += parseFloat(cb.value);
+            });
+
+            const total = Math.round(baseTotal * currentVehicleMultiplier);
+            const maxTotal = Math.round(total * 1.12);
+            const display = document.getElementById('estimate-total');
+            
+            if(total > 0) {
+                display.innerText = `₱${total.toLocaleString('en-PH')} - ₱${maxTotal.toLocaleString('en-PH')}`;
+            } else {
+                display.innerText = '₱0';
+            }
+        }
+
+        // Modal Functions
+        function openBookingModal(serviceName = '') {
+            const modal = document.getElementById('booking-modal');
+            const serviceInput = document.getElementById('modal-service-input');
+            if(serviceName) {
+                serviceInput.value = serviceName;
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        // Form Submission Handlers
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        function handleHeroSubmit(e) {
+            e.preventDefault();
+            showToast();
+            e.target.reset();
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeBookingModal();
+            showToast();
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
